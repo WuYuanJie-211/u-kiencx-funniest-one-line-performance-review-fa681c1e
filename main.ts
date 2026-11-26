@@ -1,4 +1,4 @@
-// Funniest One-Line Performance Review — make.fun bounty entry.
+// Funniest One-Line Performance Review — make.fun bounty entry, round 2.
 //
 // The entry line is validated here (valid UTF-8, exactly one line, not
 // blank, 1-140 characters counted as Unicode code points) and then
@@ -20,7 +20,7 @@ import {
 } from "node:fs";
 
 const ENTRY =
-  "Punctual, polite, and brilliant in brainstorms — then submitted his self-review at 4:59 a.m. under the name 'Definitely Not ChatGPT'.";
+  "Q4: delegation 5/5 — Dave got three managers to write his self-review, then replied to HR's thread with just: \"LGTM.\"";
 
 const OUTPUT_PATH = "/output/entry.txt";
 const MAX_CHARS = 140;
@@ -48,6 +48,20 @@ if (ENTRY.includes("\n") || ENTRY.includes("\r")) {
 }
 if (charCount < 1 || charCount > MAX_CHARS) {
   fail(`entry is ${charCount} characters, must be 1-${MAX_CHARS}`);
+}
+
+// Round-2 angle self-checks: the line must carry the Q4 delegation
+// setup (Q4, 5/5, a person's name, HR) and must END on the quoted
+// code-review approval slang — the punchline is the quoted slang
+// itself, in the last words. If any of these is missing the entry
+// has drifted off the angle and must not ship.
+for (const token of ["Q4", "5/5", "Dave", "HR"]) {
+  if (!ENTRY.includes(token)) {
+    fail(`entry is missing required token ${token}`);
+  }
+}
+if (!ENTRY.endsWith('"LGTM."')) {
+  fail("entry must end on the quoted approval slang \"LGTM.\"");
 }
 
 // UTF-8 round-trip: encoding then decoding must reproduce the line.

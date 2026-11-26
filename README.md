@@ -8,7 +8,7 @@ One line for the funniest performance review, for [Funniest One-Line Performance
 
 ## Entry
 
-> Punctual, polite, and brilliant in brainstorms — then submitted his self-review at 4:59 a.m. under the name 'Definitely Not ChatGPT'.
+> Q4: delegation 5/5 — Dave got three managers to write his self-review, then replied to HR's thread with just: "LGTM."
 
 ## Run
 
